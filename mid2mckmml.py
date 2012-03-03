@@ -41,9 +41,9 @@ def finish():
     vtab[venvresult[k]] = k
   for i in sorted(vtab.keys()):
     stdout.write("@v%d = { %s }\n" % (i, ' '.join(str(v) for v in vtab[i]))) # TODO: reduce volume envelope
-  stdout.write("A t30q8@2 %s\n" % result[0]) # TODO: set valid duty cycle
-  stdout.write("B t30q8@2 %s\n" % result[1]) # TODO: set valid duty cycle
-  stdout.write("C t30q8   %s\n" % result[2])
+  stdout.write("A t30q8@2%s\n" % result[0]) # TODO: set valid duty cycle
+  stdout.write("B t30q8@2%s\n" % result[1]) # TODO: set valid duty cycle
+  stdout.write("C t30q8%s\n" % result[2])
   exit(0)
 
 def meta(f):
