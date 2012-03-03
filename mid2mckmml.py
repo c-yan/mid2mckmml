@@ -181,5 +181,5 @@ while True:
   elif (t & 0xf0) == 0xe0:
     pitch_bend(t)
   else:
-    debug("%d Unknown %d" % (p, hex(t))
+    debug("%d Unknown %d" % (p, hex(t)))
     exit(1)
