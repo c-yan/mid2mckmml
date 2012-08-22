@@ -27,7 +27,7 @@ def readv(f):
     if (t & 0x80) == 0:
       return (v << 7) + t
     else:
-      v = (v << 7) + t
+      v = (v << 7) + (t & 0x7F)
 
 def finish():
   del penvresult[(0, 0)]
