@@ -121,7 +121,16 @@ def note_off(t):
   nt = notetable[noteon[ch][1] % 12]
   l = p - noteon[ch][0]
   noteon[ch][0] = p
-  result[ch] += "o%d%s#%d" % (o, nt, l) # TODO: reduce octave
+  if po[ch] == -1:
+    result[ch] += "o%d%s#%d" % (o, nt, l)
+  else:
+    if po[ch] != o:
+      if po - o < 0:
+        result[ch] += ['>' * (o - po)]
+      else:
+        result[ch] += ['<' * (po - o)]
+    result[ch] += "%s#%d" % (nt, l)
+  po[ch] = o
 
   debug("%d Off ch=%d n=%d v=%d" % (p, ch + 1, note, vel))
 
@@ -143,6 +152,7 @@ venvresult = {}
 venv = [[], []]
 penvresult = {(0, 0): -1}
 penv = [[], [], []]
+po = [-1, -1, -1]
 
 f = open(argv[1])
 f.read(14) # skip MThd
